@@ -130,7 +130,7 @@ async def on_message(message):
       await message.channel.send("Im up! Im up! Are you okay... cool... co... <:OGmonkaThink:821509791523930162> ")
 
 
-
+    
     #Translation bot testing area
     try:
       data = download_file('/droptranslationchannels.txt', 'translationchannels.txt')
@@ -138,6 +138,7 @@ async def on_message(message):
       datatester = a_file.read()
       value = datatester.rsplit(",")
     except:
+      value="blooooooooooooooooooo"
       print("No file found")
     
 
