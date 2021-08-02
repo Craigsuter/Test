@@ -156,117 +156,117 @@ async def on_message(message):
       await channel.send("auto translation from - <#" + str(channelDataID) + ">")
     
 
-      #None mod commands
-      if (author.guild_permissions.administrator == False):
+    #None mod commands
+    if (author.guild_permissions.administrator == False):
+        
+
+        if (messagereceived =="!goosehelp"):
+          willshelp1 = "!nextdota - This will tell you the next OG Dota 2 game coming up \n!nextcsgo - This will tell you the next OG CSGO game coming up \n!nextvalo - This will tell you the next OG Valorant  game coming up \n \n"
+
+          willshelp2 = "!dotastreams / !dotastreams2 [B-Streams listed for our team] - This will tell you the streams available for the next / current series of dota happening!\n!csgostreams - This will tell you the next / current CSGO games streams\n!valostreams - This will tell you the streams for the current / next Valorant series"
+          willshelp3= "!nextdt - This will tell you the next game coming up in the currently tracked tournament"
+          willshelp4 = "!teaminfo - Use this to get info on a dota team you're looking for\nE.G - !teaminfo EG, this will give the information on EG\n!playerinfo - Use this to get information on a player"
+          willshelp5 = "!dtstreams / !dtstreams2 - This will collect the streams listed on the page of the tournaments being tracked for !nextdt / !nextdt2"
+
+          embed=discord.Embed(title="The commands I work with", color=0xff8800)
+          embed.add_field(name="The next OG games", value=willshelp1, inline=True)
+          embed.add_field(name="The streams for games", value=willshelp2, inline=False)
+          embed.add_field(name="The streams for tournament tracked", value=willshelp5, inline=False)
+          embed.add_field(name="Next game in tournament", value =willshelp3, inline=False)
+          embed.add_field(name="Team / player info", value=willshelp4, inline=False)
+          await message.channel.send(embed=embed) 
+
+        return
+
+
+
+
+
+
+
+
+
+
+
+
+
+    #All gardener commands  
+    else:
+        if(messagereceived=="!translatehere"): 
           
-
-          if (messagereceived =="!goosehelp"):
-            willshelp1 = "!nextdota - This will tell you the next OG Dota 2 game coming up \n!nextcsgo - This will tell you the next OG CSGO game coming up \n!nextvalo - This will tell you the next OG Valorant  game coming up \n \n"
-
-            willshelp2 = "!dotastreams / !dotastreams2 [B-Streams listed for our team] - This will tell you the streams available for the next / current series of dota happening!\n!csgostreams - This will tell you the next / current CSGO games streams\n!valostreams - This will tell you the streams for the current / next Valorant series"
-            willshelp3= "!nextdt - This will tell you the next game coming up in the currently tracked tournament"
-            willshelp4 = "!teaminfo - Use this to get info on a dota team you're looking for\nE.G - !teaminfo EG, this will give the information on EG\n!playerinfo - Use this to get information on a player"
-            willshelp5 = "!dtstreams / !dtstreams2 - This will collect the streams listed on the page of the tournaments being tracked for !nextdt / !nextdt2"
-
-            embed=discord.Embed(title="The commands I work with", color=0xff8800)
-            embed.add_field(name="The next OG games", value=willshelp1, inline=True)
-            embed.add_field(name="The streams for games", value=willshelp2, inline=False)
-            embed.add_field(name="The streams for tournament tracked", value=willshelp5, inline=False)
-            embed.add_field(name="Next game in tournament", value =willshelp3, inline=False)
-            embed.add_field(name="Team / player info", value=willshelp4, inline=False)
-            await message.channel.send(embed=embed) 
-
-          return
-
-
-
-
-
-
-
-
-
-
-
-
-
-      #All gardener commands  
-      else:
-          if(messagereceived=="!translatehere"): 
+          print(message.content)
+          print(sectionsofmessage[1])
+          sec = sectionsofmessage[1][2:len(sectionsofmessage[1])-1]
+          print(sec)
+          try:
             
-            print(message.content)
-            print(sectionsofmessage[1])
-            sec = sectionsofmessage[1][2:len(sectionsofmessage[1])-1]
-            print(sec)
-            try:
-              
-              print("here")
-              channel = message.guild.get_channel(int(sec))
-              print("got here")
-              await channel.send("Channel selected for translation with - <#" + str(channelDataID) + ">")
-              datatosave = str(channelDataID) + ","
-              
-              datatosave2= str(sec) + ","
-
-              a_file = open("translationchannels.txt", "a")
-              a_file.writelines(datatosave)
-              a_file.close()
- 
-              upload_file('/droptranslationchannels.txt', 'translationchannels.txt' )
-                  
-
-
-              a_file = open("translationchannelstosendtoo.txt", "a")
-              a_file.writelines(datatosave2)
-              a_file.close()
-              upload_file('/droptranslationchannelstosendtoo.txt', 'translationchannelstosendtoo.txt' )
-
-            except:
-              await message.channel.send("Error was hit with channel selected - this could be due to access")
-
-
-          if (messagereceived =="!goosehelp"):
-            willshelp1 = "!nextdota - This will tell you the next OG Dota 2 game coming up \n !nextcsgo - This will tell you the next OG CSGO game coming up \n !nextvalo - This will tell you the next OG Valorant  game coming up"
-            willshelp2 = "!dotastreams / !dotastreams2 [B-streams if we're on there]- This will tell you the streams available for the next / current series of dota happening!\n !csgostreams - This will tell you the next / current CSGO games streams\n !valostreams - This will tell you the streams for the current / next Valorant series"
-            willshelp3= "!nextdt - This will tell you the next game coming up in the currently tracked tournament\n\nAs a gardener you also gain access to commands found in: '!gardenerhelp'"
-            willshelp4 = "!teaminfo - Use this to get info on a dota team you're looking for\nE.G - !teaminfo EG, this will give the information on EG\n!playerinfo - Use this to get information on a player"
-            willshelp5 = "!dtstreams / !dtstreams2 - This will collect the streams listed on the page of the tournaments being tracked for !nextdt / !nextdt2"
-
-            embed=discord.Embed(title="The commands I work with", color=0xff8800)
-            embed.add_field(name="The next OG games", value=willshelp1, inline=True)
-            embed.add_field(name="The streams for games", value=willshelp2, inline=False)
-            embed.add_field(name="The streams for tournament tracked", value=willshelp5, inline=False)
-            embed.add_field(name="Next game in tournament", value =willshelp3, inline=False)
-            embed.add_field(name="Team / player info", value=willshelp4, inline=False)
-            await message.channel.send(embed=embed) 
-
-
-          if ((messagereceived =="!gardenerhelp")):
-            GardenerHelp9 = "!verifydturl / !resetdt / !changedt\n\n!verifydturl - This will tell you the currently tournament link being tracked\n!resetdt - This will the currently tracked tournament\n!changedt - This will change the tournament being tracked to the URL provided"
-            GardenerHelp4 = "!DotaBo1 / Bo3 / Bo5 \n \n !CSGOBo1 / Bo3 / Bo5 \n \n !ValoBo1 / Bo3 / Bo5 \n \n These will create the roles required to host a predictions game, purely type the one required, e.g - \n !CSGOBo3 \n \n"
-
-            GardenerHelp5 = "!deleteDotaBo1 / Bo3 / Bo5 \n \n !deleteCSGOBo1 / Bo3 / Bo5 \n \n !deleteValoBo1 / Bo3 / Bo5 \n \n These will delete the roles that were made for the prediction game e.g - \n !deleteCSGOBo3 will delete the CSGOBo3 roles \n \n"
-
-            GardenerHelp6 = "!avatar - You're able to see the avatars of any user / yourself, if you ping nobody it'll show your own avatar, if you ping someone it will show theirs\n\n!server_badge - This will get your the icon used for the server icon"
-
-            GardenerHelp7 = "!dotastreams / !csgostreams / !valostreams - these will tell you the streams available for the next match of OG Dota / CSGO / Valorant respectively\n\n"
-
-            GardenerHelp8 = "!copyover [channel to copy from here] - use this command to copy the content of a channel from 1 to another, the command will send the last 100 messages from a channel to the channel the command is being used in\n\nE.G of usage - !copyover 847832196294115349\nThis will give you the value from a copy test, the bot must be in both servers if copying from a different server"
-
-            GardenerHelp10 = "!reminder - This command will let you set reminders for future you, the bot will remind you in the channel it is used in after a set amount of time! Use !reminder to find more information!\n!myreminders - This command will tell you your currently saved reminders and when they are going to be sent\n!deletereminder - This will allow for you to remove a reminder of your choice, choose the reminder you want to delete by checking for it on !myreminders and then using it for example like - !deletereminder 1\n!snooze - This will let you reset the reminder you received last, you will need to specify a new time the same way you did for !reminder, example !snooze 5m - will remind you again in 5 minutes"
-
-            GardenerHelp11 = "!todolist - This will list the current to do list for the bot\n!addtodo - This will add to the todolist the test following the command\n!deletetodo - This will delete the 'todo' that is attached to the number chosen, find the to-do values using !todolist"
+            print("here")
+            channel = message.guild.get_channel(int(sec))
+            print("got here")
+            await channel.send("Channel selected for translation with - <#" + str(channelDataID) + ">")
+            datatosave = str(channelDataID) + ","
             
-            embed=discord.Embed(title="The commands you get as a Gardener!", color=0xff8800)
-            embed.add_field(name="Getting game streams",value=GardenerHelp7, inline=True)
-            embed.add_field(name="Creating the roles for prediction games", value=GardenerHelp4, inline=False)
-            embed.add_field(name="Delete the roles that were used for a prediction game", value=GardenerHelp5, inline=False)
-            embed.add_field(name="Viewing avatars of users", value=GardenerHelp6, inline=False)
-            embed.add_field(name="Tracking a tournament", value=GardenerHelp9, inline=False)
-            embed.add_field(name="Reminders", value=GardenerHelp10, inline=False)
-            embed.add_field(name="Copying data", value=GardenerHelp8, inline=False)
-            embed.add_field(name="To-Do / suggestion list", value=GardenerHelp11, inline=False)
-            await message.channel.send(embed=embed)
+            datatosave2= str(sec) + ","
+
+            a_file = open("translationchannels.txt", "a")
+            a_file.writelines(datatosave)
+            a_file.close()
+
+            upload_file('/droptranslationchannels.txt', 'translationchannels.txt' )
+                
+
+
+            a_file = open("translationchannelstosendtoo.txt", "a")
+            a_file.writelines(datatosave2)
+            a_file.close()
+            upload_file('/droptranslationchannelstosendtoo.txt', 'translationchannelstosendtoo.txt' )
+
+          except:
+            await message.channel.send("Error was hit with channel selected - this could be due to access")
+
+
+        if (messagereceived =="!goosehelp"):
+          willshelp1 = "!nextdota - This will tell you the next OG Dota 2 game coming up \n !nextcsgo - This will tell you the next OG CSGO game coming up \n !nextvalo - This will tell you the next OG Valorant  game coming up"
+          willshelp2 = "!dotastreams / !dotastreams2 [B-streams if we're on there]- This will tell you the streams available for the next / current series of dota happening!\n !csgostreams - This will tell you the next / current CSGO games streams\n !valostreams - This will tell you the streams for the current / next Valorant series"
+          willshelp3= "!nextdt - This will tell you the next game coming up in the currently tracked tournament\n\nAs a gardener you also gain access to commands found in: '!gardenerhelp'"
+          willshelp4 = "!teaminfo - Use this to get info on a dota team you're looking for\nE.G - !teaminfo EG, this will give the information on EG\n!playerinfo - Use this to get information on a player"
+          willshelp5 = "!dtstreams / !dtstreams2 - This will collect the streams listed on the page of the tournaments being tracked for !nextdt / !nextdt2"
+
+          embed=discord.Embed(title="The commands I work with", color=0xff8800)
+          embed.add_field(name="The next OG games", value=willshelp1, inline=True)
+          embed.add_field(name="The streams for games", value=willshelp2, inline=False)
+          embed.add_field(name="The streams for tournament tracked", value=willshelp5, inline=False)
+          embed.add_field(name="Next game in tournament", value =willshelp3, inline=False)
+          embed.add_field(name="Team / player info", value=willshelp4, inline=False)
+          await message.channel.send(embed=embed) 
+
+
+        if ((messagereceived =="!gardenerhelp")):
+          GardenerHelp9 = "!verifydturl / !resetdt / !changedt\n\n!verifydturl - This will tell you the currently tournament link being tracked\n!resetdt - This will the currently tracked tournament\n!changedt - This will change the tournament being tracked to the URL provided"
+          GardenerHelp4 = "!DotaBo1 / Bo3 / Bo5 \n \n !CSGOBo1 / Bo3 / Bo5 \n \n !ValoBo1 / Bo3 / Bo5 \n \n These will create the roles required to host a predictions game, purely type the one required, e.g - \n !CSGOBo3 \n \n"
+
+          GardenerHelp5 = "!deleteDotaBo1 / Bo3 / Bo5 \n \n !deleteCSGOBo1 / Bo3 / Bo5 \n \n !deleteValoBo1 / Bo3 / Bo5 \n \n These will delete the roles that were made for the prediction game e.g - \n !deleteCSGOBo3 will delete the CSGOBo3 roles \n \n"
+
+          GardenerHelp6 = "!avatar - You're able to see the avatars of any user / yourself, if you ping nobody it'll show your own avatar, if you ping someone it will show theirs\n\n!server_badge - This will get your the icon used for the server icon"
+
+          GardenerHelp7 = "!dotastreams / !csgostreams / !valostreams - these will tell you the streams available for the next match of OG Dota / CSGO / Valorant respectively\n\n"
+
+          GardenerHelp8 = "!copyover [channel to copy from here] - use this command to copy the content of a channel from 1 to another, the command will send the last 100 messages from a channel to the channel the command is being used in\n\nE.G of usage - !copyover 847832196294115349\nThis will give you the value from a copy test, the bot must be in both servers if copying from a different server"
+
+          GardenerHelp10 = "!reminder - This command will let you set reminders for future you, the bot will remind you in the channel it is used in after a set amount of time! Use !reminder to find more information!\n!myreminders - This command will tell you your currently saved reminders and when they are going to be sent\n!deletereminder - This will allow for you to remove a reminder of your choice, choose the reminder you want to delete by checking for it on !myreminders and then using it for example like - !deletereminder 1\n!snooze - This will let you reset the reminder you received last, you will need to specify a new time the same way you did for !reminder, example !snooze 5m - will remind you again in 5 minutes"
+
+          GardenerHelp11 = "!todolist - This will list the current to do list for the bot\n!addtodo - This will add to the todolist the test following the command\n!deletetodo - This will delete the 'todo' that is attached to the number chosen, find the to-do values using !todolist"
+          
+          embed=discord.Embed(title="The commands you get as a Gardener!", color=0xff8800)
+          embed.add_field(name="Getting game streams",value=GardenerHelp7, inline=True)
+          embed.add_field(name="Creating the roles for prediction games", value=GardenerHelp4, inline=False)
+          embed.add_field(name="Delete the roles that were used for a prediction game", value=GardenerHelp5, inline=False)
+          embed.add_field(name="Viewing avatars of users", value=GardenerHelp6, inline=False)
+          embed.add_field(name="Tracking a tournament", value=GardenerHelp9, inline=False)
+          embed.add_field(name="Reminders", value=GardenerHelp10, inline=False)
+          embed.add_field(name="Copying data", value=GardenerHelp8, inline=False)
+          embed.add_field(name="To-Do / suggestion list", value=GardenerHelp11, inline=False)
+          await message.channel.send(embed=embed)
 
 
     
