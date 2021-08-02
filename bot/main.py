@@ -167,7 +167,7 @@ async def on_message(message):
     if (author.guild_permissions.administrator == False):
         
 
-        if (messagereceived =="!goosehelp"):
+        if (messagereceived =="!BZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZARk234283u49234"):
           willshelp1 = "!nextdota - This will tell you the next OG Dota 2 game coming up \n!nextcsgo - This will tell you the next OG CSGO game coming up \n!nextvalo - This will tell you the next OG Valorant  game coming up \n \n"
 
           willshelp2 = "!dotastreams / !dotastreams2 [B-Streams listed for our team] - This will tell you the streams available for the next / current series of dota happening!\n!csgostreams - This will tell you the next / current CSGO games streams\n!valostreams - This will tell you the streams for the current / next Valorant series"
@@ -175,23 +175,8 @@ async def on_message(message):
           willshelp4 = "!teaminfo - Use this to get info on a dota team you're looking for\nE.G - !teaminfo EG, this will give the information on EG\n!playerinfo - Use this to get information on a player"
           willshelp5 = "!dtstreams / !dtstreams2 - This will collect the streams listed on the page of the tournaments being tracked for !nextdt / !nextdt2"
 
-          embed=discord.Embed(title="The commands I work with", color=0xff8800)
-          embed.add_field(name="The next OG games", value=willshelp1, inline=True)
-          embed.add_field(name="The streams for games", value=willshelp2, inline=False)
-          embed.add_field(name="The streams for tournament tracked", value=willshelp5, inline=False)
-          embed.add_field(name="Next game in tournament", value =willshelp3, inline=False)
-          embed.add_field(name="Team / player info", value=willshelp4, inline=False)
-          await message.channel.send(embed=embed) 
-
+         
         return
-
-
-
-
-
-
-
-
 
 
 
@@ -245,10 +230,16 @@ async def on_message(message):
 
         if (messagereceived =="!translationhelp"):
           willshelp1 = "!translatehere - use this to set the translation tracking \nExample of use -\n!translatehere #ChannelHere"
+          willshelp2 = "!deletetracking - use this to remove any tracking used on the channel that you're activating the command in"
 
           embed=discord.Embed(title="The commands I work with", color=0xff8800)
           embed.add_field(name="Add channel tracking for translation", value=willshelp1, inline=True)
+          embed.add_field(name="Delete tracking of channel", value=willshelp2,inline=False)
           await message.channel.send(embed=embed) 
+
+
+
+
 
 
         if (messagereceived=="!deletetracking"):
@@ -291,33 +282,7 @@ async def on_message(message):
           upload_file('/droptranslationchannels.txt', 'translationchannels.txt' )
           upload_file('/droptranslationchannelstosendtoo.txt', 'translationchannelstosendtoo.txt' )
 
-          await message.channel.send("Trackign for this channel has been removed")
-
-
-          
-
-
-
-
-
-
-
-              
-
-
-
-       
-
-    
-    #Rus translation - N0tail Discord
-    if(channelDataID == 808362012849340416):
-      channel = message.guild.get_channel(834445890235138133)
-      msgID = message.jump_url
-      author = message.author
-      data = translations(nexttrans, author, msgID)
-      #Getting translation data
-      embed=data
-      await channel.send(embed=embed)
+          await message.channel.send("Tracking for this channel has been removed")
 
 
 
