@@ -228,7 +228,7 @@ async def on_message(message):
 
 
 
-        if (messagereceived =="!translationhelp"):
+        if (messagereceived =="!translationhelp" or messagereceived=="!help"):
           willshelp1 = "!translatehere - use this to set the translation tracking \nExample of use -\n!translatehere #ChannelHere"
           willshelp2 = "!deletetracking - use this to remove any tracking used on the channel that you're activating the command in"
 
