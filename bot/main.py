@@ -9,7 +9,6 @@ from urllib.request import urlopen as uReq
 from bs4 import BeautifulSoup as soup
 import discord
 import os
-from cleardota import cleardota
 from discord.ext import commands
 from discord.ext.commands import Bot, has_permissions, CheckFailure
 from dotenv import load_dotenv
@@ -18,25 +17,8 @@ import datetime
 from time import strptime
 import asyncio
 import time
-from apscheduler.triggers.cron import CronTrigger
-from apscheduler.schedulers.asyncio import AsyncIOScheduler
 from translation import translations
-from gamecheckers import DotaCheck
-from gamecheckers import CSGOCheck
-from gamecheckers import ValoCheck
-from streamcollection import DotaStreams
-from streamcollection import CSGOStreams
-from streamcollection import ValoStreams
-from lastgames import LastDota
-from lastgames import LastCSGO
-from tournamentcheckers import DotaCheckTourni 
-from tournamentchecker2 import DotaCheckTourni2
-from dropboxUploader import upload_file
-from dropboxUploader import download_file
-import liquipediapy
-from stream2 import DotaStreams2
-from dtStreams import dtStreams
-import random
+
 
 #sets up command prefix
 intents = discord.Intents().all()
@@ -72,7 +54,7 @@ print("Bot started up at: ", startup)
 async def on_ready():
     print("We have logged in as {0.user}.format(client)")
     #Sets presence
-    await client.change_presence(activity=discord.Game(name="with ducks (use !goosehelp)"))
+    await client.change_presence(activity=discord.Game(name="with languages (use !translationhelp)"))
 
     
 
@@ -145,6 +127,25 @@ async def on_message(message):
     if ((mention in message.content) and (messagereceived[0] != '!')):
       await message.channel.send("Im up! Im up! Are you okay... cool... co... <:OGmonkaThink:821509791523930162> ")
 
+
+
+    #Translation bot testing area
+    a_file = open("translationchannels.txt","r")
+    datatester = a_file.read()
+    value = datatester.rsplit(",")
+    
+
+    if(str(channelDataID) in value):
+      print("This channel is translating!")
+      location = value.index(str(channelDataID))
+
+      a_file =open("translationchannelstosendtoo.txt", "r")
+      datascan = a_file.read()
+      values = datascan.rsplit(",")
+
+      channeltosendtoo = values[int(location)]
+      channel = message.guild.get_channel(int(channeltosendtoo))
+      await channel.send("auto translation from - <#" + str(channelDataID) + ">")
     
 
       #None mod commands
@@ -183,7 +184,33 @@ async def on_message(message):
 
       #All gardener commands  
       else:
+          if(messagereceived=="!translatehere"): 
+            
+            print(message.content)
+            print(sectionsofmessage[1])
+            sec = sectionsofmessage[1][2:len(sectionsofmessage[1])-1]
+            print(sec)
+            try:
+              
+              print("here")
+              channel = message.guild.get_channel(int(sec))
+              print("got here")
+              await channel.send("Channel selected for translation with - <#" + str(channelDataID) + ">")
+              datatosave = str(channelDataID) + ","
+              
+              datatosave2= str(sec) + ","
 
+              a_file = open("translationchannels.txt", "a")
+              a_file.writelines(datatosave)
+              a_file.close()
+
+
+              a_file = open("translationchannelstosendtoo.txt", "a")
+              a_file.writelines(datatosave2)
+              a_file.close()
+
+            except:
+              await message.channel.send("Error was hit with channel selected - this could be due to access")
 
 
           if (messagereceived =="!goosehelp"):
