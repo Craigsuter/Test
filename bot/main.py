@@ -217,6 +217,12 @@ async def on_message(message):
             
             datatosave2= str(sec) + ","
 
+            try:
+              data = download_file('/droptranslationchannels.txt', 'translationchannels.txt')
+              data2 = download_file('/droptranslationchannelstosendtoo.txt', 'translationchannelstosendtoo.txt')
+            except:
+              print("no files")
+
             a_file = open("translationchannels.txt", "a")
             a_file.writelines(datatosave)
             a_file.close()
@@ -254,7 +260,7 @@ async def on_message(message):
           value = datatester.rsplit(",")
 
 
-          data2 = download_file('/droptranslationchannelstosendtoo.txt', 'translationchannelstosendtoo.txt')
+          download_file('/droptranslationchannelstosendtoo.txt', 'translationchannelstosendtoo.txt')
           a_file2 = open("translationchannelstosendtoo.txt","r")
           datatester2 = a_file2.read()
           value2 = datatester2.rsplit(",")
@@ -281,6 +287,7 @@ async def on_message(message):
           f2=open("translationchannelstosendtoo.txt", "w")
           f2.write(basetosend)
           f2.close()
+
           upload_file('/droptranslationchannels.txt', 'translationchannels.txt' )
           upload_file('/droptranslationchannelstosendtoo.txt', 'translationchannelstosendtoo.txt' )
 
