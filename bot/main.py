@@ -186,16 +186,16 @@ async def on_message(message):
     else:
         if(messagereceived=="!translatehere"): 
           
-          print(message.content)
-          print(sectionsofmessage[1])
+          
+          
           sec = sectionsofmessage[1][2:len(sectionsofmessage[1])-1]
-          print(sec)
+          
           try:
             
 
             channel = message.guild.get_channel(int(sec))
 
-            await message.channel.send("I have added this channel to automatically translate into - <#" + str(message.channel.id) + ">")
+            await message.channel.send("I have added this channel to automatically translate into - <#" + str(sec) + ">")
      
             await channel.send("Channel selected for translation with - <#" + str(channelDataID) + ">")
             datatosave = str(channelDataID) + ","
