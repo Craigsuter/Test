@@ -153,8 +153,15 @@ async def on_message(message):
 
       channeltosendtoo = values[int(location)]
       channel = message.guild.get_channel(int(channeltosendtoo))
-      await channel.send("auto translation from - <#" + str(channelDataID) + ">")
-    
+
+      
+      msgID = message.jump_url
+      author = message.author
+      data = translations(nexttrans, author, msgID)
+      #Getting translation data
+      embed=data
+      await channel.send(embed=embed)
+
 
     #None mod commands
     if (author.guild_permissions.administrator == False):
@@ -200,9 +207,9 @@ async def on_message(message):
           print(sec)
           try:
             
-            print("here")
+
             channel = message.guild.get_channel(int(sec))
-            print("got here")
+     
             await channel.send("Channel selected for translation with - <#" + str(channelDataID) + ">")
             datatosave = str(channelDataID) + ","
             
