@@ -132,10 +132,13 @@ async def on_message(message):
 
 
     #Translation bot testing area
-    data = download_file('/droptranslationchannels.txt', 'translationchannels.txt')
-    a_file = open("translationchannels.txt","r")
-    datatester = a_file.read()
-    value = datatester.rsplit(",")
+    try:
+      data = download_file('/droptranslationchannels.txt', 'translationchannels.txt')
+      a_file = open("translationchannels.txt","r")
+      datatester = a_file.read()
+      value = datatester.rsplit(",")
+    except:
+      print("No file found")
     
 
     if(str(channelDataID) in value):
