@@ -18,6 +18,8 @@ from time import strptime
 import asyncio
 import time
 from translation import translations
+from dropboxUploader import upload_file
+from dropboxUploader import download_file
 
 
 #sets up command prefix
@@ -130,12 +132,14 @@ async def on_message(message):
 
 
     #Translation bot testing area
+    data = download_file('/droptranslationchannels.txt', 'translationchannels.txt')
     a_file = open("translationchannels.txt","r")
     datatester = a_file.read()
     value = datatester.rsplit(",")
     
 
     if(str(channelDataID) in value):
+      download_file('/droptranslationchannelstosendtoo.txt', 'translationchannelstosendtoo.txt' )
       print("This channel is translating!")
       location = value.index(str(channelDataID))
 
@@ -203,11 +207,15 @@ async def on_message(message):
               a_file = open("translationchannels.txt", "a")
               a_file.writelines(datatosave)
               a_file.close()
+ 
+              upload_file('/droptranslationchannels.txt', 'translationchannels.txt' )
+                  
 
 
               a_file = open("translationchannelstosendtoo.txt", "a")
               a_file.writelines(datatosave2)
               a_file.close()
+              upload_file('/droptranslationchannelstosendtoo.txt', 'translationchannelstosendtoo.txt' )
 
             except:
               await message.channel.send("Error was hit with channel selected - this could be due to access")
