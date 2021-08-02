@@ -20,7 +20,7 @@ def translations(nexttrans, author, msgID):
       titleoftrans = "The following message was sent by: " + str(author)
       #Creating translation embed
       embed=discord.Embed(title=titleoftrans,color=0xff8800)
-      embed.set_thumbnail(url='https://img1.pnghut.com/4/8/10/VdfX4d0MCW/machine-translation-linguistics-language-logo-brand.jpg')
+      embed.set_thumbnail(url='https://img.icons8.com/ios/452/google-translate.png')
       embed.add_field(name="The language the message was sent in", value = language + "\n Google's confidence on language: " + confidence, inline=False)
       embed.add_field(name="The original message was", value=nexttrans, inline=True)
       embed.add_field(name="The translated version", value=translation,inline=False)
