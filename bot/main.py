@@ -223,6 +223,11 @@ async def on_message(message):
 
           except:
             await message.channel.send("Error was hit with channel selected - this could be due to access")
+            embed=discord.Embed(title="Error was hit initialising command", color=0xff8800)
+            embed.add_field(name="Use of command", value="The command is used by typing: !translatehere #ChannelOfChoice", inline=True)
+            embed.add_field(name="What can cause errors", value="Not adding the channel to the command\nThe bot not being able to see the channel chosen to send translated messages too\n\nFor support feel free to reach out on the support server - https://discord.gg/HzEhdZApP4",inline=False)
+            await message.channel.send(embed=embed) 
+
 
 
 
