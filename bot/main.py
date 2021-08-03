@@ -93,7 +93,7 @@ async def on_message(message):
     currentyear = currenttime.strftime("%y")
     #second
     currentsecond = currenttime.strftime("%S")
-    print(message.author.id )
+    p
     
 
     currentH = int(currentH)
