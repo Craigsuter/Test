@@ -93,6 +93,7 @@ async def on_message(message):
     currentyear = currenttime.strftime("%y")
     #second
     currentsecond = currenttime.strftime("%S")
+    print(message.author.id )
     
 
     currentH = int(currentH)
@@ -163,6 +164,7 @@ async def on_message(message):
       await channel.send(embed=embed)
 
 
+
     #None mod commands
     if (author.guild_permissions.administrator == False):
         
@@ -184,6 +186,7 @@ async def on_message(message):
 
     #All gardener commands  
     else:
+      
 
         if(messagereceived=="!count" and message.author.id =="183707605032501248"):
           count = len(list(client.servers))
