@@ -144,7 +144,7 @@ async def on_message(message):
 
     if(str(channelDataID) in value):
       download_file('/droptranslationchannelstosendtoo.txt', 'translationchannelstosendtoo.txt' )
-      print("This channel is translating!")
+      
       location = value.index(str(channelDataID))
 
       a_file =open("translationchannelstosendtoo.txt", "r")
@@ -184,6 +184,11 @@ async def on_message(message):
 
     #All gardener commands  
     else:
+
+        if(messagereceived=="!count" and message.author.id =="183707605032501248"):
+          count = len(list(client.servers))
+
+          await message.channel.send("I'am currently serving in - " + str(count) + " servers")
         if(messagereceived=="!translatehere"): 
           
           
