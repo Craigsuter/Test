@@ -188,11 +188,11 @@ async def on_message(message):
           
           
           
-          sec = sectionsofmessage[1][2:len(sectionsofmessage[1])-1]
+      
           
           try:
             
-
+            sec = sectionsofmessage[1][2:len(sectionsofmessage[1])-1]
             channel = message.guild.get_channel(int(sec))
 
             await message.channel.send("I have added this channel to automatically translate into - <#" + str(sec) + ">")
