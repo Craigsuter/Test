@@ -188,7 +188,7 @@ async def on_message(message):
     else:
       
 
-        if(messagereceived=="!count" and message.author.id =="183707605032501248"):
+        if(messagereceived=="!count" and str(message.author.id) =="183707605032501248"):
           count = len(list(client.servers))
 
           await message.channel.send("I'am currently serving in - " + str(count) + " servers")
