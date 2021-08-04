@@ -249,7 +249,10 @@ async def on_message(message):
                     embed.add_field(name="What can cause errors", value="Not adding the channel to the command\nThe bot not being able to see the channel chosen to send translated messages too\n\nFor support feel free to reach out on the support server - [Support Server](https://discord.gg/HzEhdZApP4)",inline=False)
                     await message.channel.send(embed=embed) 
             if(i==0):
-              await message.channel.send("That channel is not in this server / available")
+              embed=discord.Embed(title="Error was hit initialising command", color=0xff8800)
+              embed.add_field(name="Use of command", value="The command is used by typing: !translatehere #ChannelOfChoice", inline=True)
+              embed.add_field(name="What can cause errors", value="Not adding the channel to the command\nThe bot not being able to see the channel chosen to send translated messages too\n\nFor support feel free to reach out on the support server - [Support Server](https://discord.gg/HzEhdZApP4)",inline=False)
+              await message.channel.send(embed=embed) 
           except:
             embed=discord.Embed(title="Error was hit initialising command", color=0xff8800)
             embed.add_field(name="Use of command", value="The command is used by typing: !translatehere #ChannelOfChoice", inline=True)
