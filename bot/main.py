@@ -272,6 +272,7 @@ async def on_message(message):
           embed=discord.Embed(title="The commands I work with", color=0xff8800)
           embed.add_field(name="Add channel tracking for translation", value=willshelp1, inline=True)
           embed.add_field(name="Delete tracking of channel", value=willshelp2,inline=False)
+          embed.add_field(name="Support server", value="[Support Server](https://discord.gg/HzEhdZApP4)", inline=False)
           await message.channel.send(embed=embed) 
 
 
