@@ -167,6 +167,8 @@ async def on_message(message):
 
     #None mod commands
     if (author.guild_permissions.administrator == False):
+        if(messagereceived=="!translationhelp"):
+          await message.channel.send("You're not an administrator in this server")
         
 
         if (messagereceived =="!BZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZARk234283u49234"):
