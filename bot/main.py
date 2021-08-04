@@ -202,53 +202,60 @@ async def on_message(message):
 
         if(messagereceived=="!translatehere"): 
           i=0
-          for channel in message.guild.channels:
-              if(secondPartOfMessage == str(channel.id)):
-                i=i+1
-          
-          
-      
-          
-                try:
-                  
-                  sec = sectionsofmessage[1][2:len(sectionsofmessage[1])-1]
-                  channel = message.guild.get_channel(int(sec))
-
-                  await message.channel.send("I have added this channel to automatically translate into - <#" + str(sec) + ">")
-          
-                  await channel.send("Channel selected for translation with - <#" + str(channelDataID) + ">")
-                  datatosave = str(channelDataID) + ","
-                  
-                  datatosave2= str(sec) + ","
-
-                  try:
-                    data = download_file('/droptranslationchannels.txt', 'translationchannels.txt')
-                    data2 = download_file('/droptranslationchannelstosendtoo.txt', 'translationchannelstosendtoo.txt')
-                  except:
-                    print("no files")
-
-                  a_file = open("translationchannels.txt", "a")
-                  a_file.writelines(datatosave)
-                  a_file.close()
-
-                  upload_file('/droptranslationchannels.txt', 'translationchannels.txt' )
-                      
-
-
-                  a_file = open("translationchannelstosendtoo.txt", "a")
-                  a_file.writelines(datatosave2)
-                  a_file.close()
-                  upload_file('/droptranslationchannelstosendtoo.txt', 'translationchannelstosendtoo.txt' )
-
-                except:
+          try:
+            for channel in message.guild.channels:
+                if(sectionsofmessage[1][2:len(sectionsofmessage[1])-1] == str(channel.id)):
                   i=i+1
-                  
-                  embed=discord.Embed(title="Error was hit initialising command", color=0xff8800)
-                  embed.add_field(name="Use of command", value="The command is used by typing: !translatehere #ChannelOfChoice", inline=True)
-                  embed.add_field(name="What can cause errors", value="Not adding the channel to the command\nThe bot not being able to see the channel chosen to send translated messages too\n\nFor support feel free to reach out on the support server - [Support Server](https://discord.gg/HzEhdZApP4)",inline=False)
-                  await message.channel.send(embed=embed) 
-          if(i==0):
-            await message.channel.send("That channel is not in this server / available")
+            
+            
+        
+            
+                  try:
+                    
+                    sec = sectionsofmessage[1][2:len(sectionsofmessage[1])-1]
+                    channel = message.guild.get_channel(int(sec))
+
+                    await message.channel.send("I have added this channel to automatically translate into - <#" + str(sec) + ">")
+            
+                    await channel.send("Channel selected for translation with - <#" + str(channelDataID) + ">")
+                    datatosave = str(channelDataID) + ","
+                    
+                    datatosave2= str(sec) + ","
+
+                    try:
+                      data = download_file('/droptranslationchannels.txt', 'translationchannels.txt')
+                      data2 = download_file('/droptranslationchannelstosendtoo.txt', 'translationchannelstosendtoo.txt')
+                    except:
+                      print("no files")
+
+                    a_file = open("translationchannels.txt", "a")
+                    a_file.writelines(datatosave)
+                    a_file.close()
+
+                    upload_file('/droptranslationchannels.txt', 'translationchannels.txt' )
+                        
+
+
+                    a_file = open("translationchannelstosendtoo.txt", "a")
+                    a_file.writelines(datatosave2)
+                    a_file.close()
+                    upload_file('/droptranslationchannelstosendtoo.txt', 'translationchannelstosendtoo.txt' )
+
+                  except:
+                    i=i+1
+                    
+                    embed=discord.Embed(title="Error was hit initialising command", color=0xff8800)
+                    embed.add_field(name="Use of command", value="The command is used by typing: !translatehere #ChannelOfChoice", inline=True)
+                    embed.add_field(name="What can cause errors", value="Not adding the channel to the command\nThe bot not being able to see the channel chosen to send translated messages too\n\nFor support feel free to reach out on the support server - [Support Server](https://discord.gg/HzEhdZApP4)",inline=False)
+                    await message.channel.send(embed=embed) 
+            if(i==0):
+              await message.channel.send("That channel is not in this server / available")
+          except:
+            embed=discord.Embed(title="Error was hit initialising command", color=0xff8800)
+            embed.add_field(name="Use of command", value="The command is used by typing: !translatehere #ChannelOfChoice", inline=True)
+            embed.add_field(name="What can cause errors", value="Not adding the channel to the command\nThe bot not being able to see the channel chosen to send translated messages too\n\nFor support feel free to reach out on the support server - [Support Server](https://discord.gg/HzEhdZApP4)",inline=False)
+            await message.channel.send(embed=embed) 
+
 
 
 
