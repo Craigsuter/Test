@@ -128,7 +128,7 @@ async def on_message(message):
     mention = f'<@!{client.user.id}>'
     #Checks for a ping of the bot
     if ((mention in message.content) and (messagereceived[0] != '!')):
-      await message.channel.send("Im up! Im up! Are you okay... cool... co... <:OGmonkaThink:821509791523930162> ")
+      await message.channel.send("Im up! How can I help? if you're running into issues you're able to reach out at my support server - https://discord.gg/HzEhdZApP4")
 
 
     
