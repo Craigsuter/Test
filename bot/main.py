@@ -188,7 +188,13 @@ async def on_message(message):
 
     #All gardener commands  
     else:
-      
+        if(messagereceived=="!serverlist" and str(message.author.id) =="183707605032501248"): 
+              
+              text_list = []
+              for guild in client.guilds:
+                await message.channel.send(str(guild.name) + " - " + str(guild.member_count))
+                
+        
 
         if(messagereceived=="!count" and str(message.author.id) =="183707605032501248"):
           count = len(client.guilds)
