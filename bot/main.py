@@ -135,7 +135,7 @@ async def on_message(message):
 
 
     try:
-      data = download_file('/droptranslationservers.txt', 'translationchannels.txt')
+      data = download_file('/droptranslationservers.txt', 'translationservers.txt')
       a_file = open("translationservers.txt","r")
       datatester = a_file.read()
       value = datatester.rsplit(",")
