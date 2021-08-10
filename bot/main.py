@@ -131,6 +131,40 @@ async def on_message(message):
       await message.channel.send("Im up! How can I help? if you're running into issues you're able to reach out at my support server - https://discord.gg/HzEhdZApP4")
 
 
+
+
+
+    try:
+      data = download_file('/droptranslationservers.txt', 'translationchannels.txt')
+      a_file = open("translationservers.txt","r")
+      datatester = a_file.read()
+      value = datatester.rsplit(",")
+    except:
+      value="blooooooooooooooooooo"
+      print("No file found")
+
+
+    if(str(message.guild.id) in value):
+      download_file('/droptranslationserverstosendtoo.txt', 'translationserverstosendtoo.txt' )
+      
+      location = value.index(str(channelDataID))
+
+      a_file =open("translationserverstosendtoo.txt", "r")
+      datascan = a_file.read()
+      values = datascan.rsplit(",")
+
+      channeltosendtoo = values[int(location)]
+      channel = message.guild.get_channel(int(channeltosendtoo))
+
+      
+      msgID = message.jump_url
+      author = message.author
+      data = translations(nexttrans, author, msgID)
+      #Getting translation data
+      embed=data
+      await channel.send(embed=embed)
+
+
     
     #Translation bot testing area
     try:
