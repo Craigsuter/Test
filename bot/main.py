@@ -162,7 +162,7 @@ async def on_message(message):
       data = translations(nexttrans, author, msgID)
       #Getting translation data
       embed=data
-      embed.add_field(name="Channel of sending", value=str(message.channel.id), inline=False)
+      embed.add_field(name="Channel of sending", value="<#" + str(message.channel.id) + ">", inline=False)
       await channel.send(embed=embed)
 
 
