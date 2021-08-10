@@ -162,6 +162,7 @@ async def on_message(message):
       data = translations(nexttrans, author, msgID)
       #Getting translation data
       embed=data
+      embed.add_field(name="Channel of sending", value=str(message.channel.id), inline=False)
       await channel.send(embed=embed)
 
 
@@ -312,7 +313,7 @@ async def on_message(message):
               
               
 
-              await message.channel.send("I have added this server to automatically translate into - <#" + str(message.guild.id) + ">")
+              await message.channel.send("I have added this server to automatically translate into - <#" + str(message.channel.id) + ">")
       
               
               datatosave = str(message.guild.id) + ","
