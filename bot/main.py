@@ -147,7 +147,7 @@ async def on_message(message):
     if(str(message.guild.id) in value):
       download_file('/droptranslationserverstosendtoo.txt', 'translationserverstosendtoo.txt' )
       
-      location = value.index(str(channelDataID))
+      location = value.index(str(message.guild.id))
 
       a_file =open("translationserverstosendtoo.txt", "r")
       datascan = a_file.read()
