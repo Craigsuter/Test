@@ -414,6 +414,51 @@ async def on_message(message):
           upload_file('/droptranslationchannelstosendtoo.txt', 'translationchannelstosendtoo.txt' )
 
           await message.channel.send("Tracking for this channel has been removed")
+        
+
+        if (messagereceived=="!deleteservertracking"):
+          currentchannel = message.guild.id
+          currentchannelstring = str(currentchannel)
+          data = download_file('/droptranslationservers.txt', 'translationservers.txt')
+          a_file = open("translationservers.txt","r")
+          datatester = a_file.read()
+          value = datatester.rsplit(",")
+
+
+          download_file('/droptranslationserverstosendtoo.txt', 'translationserverstosendtoo.txt')
+          a_file2 = open("translationserverstosendtoo.txt","r")
+          datatester2 = a_file2.read()
+          value2 = datatester2.rsplit(",")
+          basechannels=""
+          basetosend=""
+          i=0
+          j=0
+          if(str(message.guild.id) in value):
+            while i < len(value):
+              if(str(value[i]) == currentchannelstring):
+                value.pop(i)
+                value2.pop(i)
+              i=i+1
+
+          while j < len(value):
+            basechannels = basechannels + str(value[j]) + ","
+            basetosend= basetosend + str(value2[j]) + ","
+            j=j+1
+          
+          f=open("translationservers.txt","w")
+          f.write(basechannels)
+          f.close()
+
+          f2=open("translationserverstosendtoo.txt", "w")
+          f2.write(basetosend)
+          f2.close()
+
+          upload_file('/droptranslationservers.txt', 'translationservers.txt' )
+          upload_file('/droptranslationserverstosendtoo.txt', 'translationserverstosendtoo.txt' )
+
+          await message.channel.send("Tracking for this server has been removed")
+
+
 
 
 
