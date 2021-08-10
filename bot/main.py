@@ -269,6 +269,59 @@ async def on_message(message):
 
 
 
+        if(messagereceived=="!translateserver"): 
+          i=0
+          try:
+            i=i+1
+
+            try:
+              
+              
+
+              await message.channel.send("I have added this server to automatically translate into - <#" + str(message.guild.id) + ">")
+      
+              
+              datatosave = str(message.guild.id) + ","
+              
+              datatosave2= str(message.channel.id) + ","
+
+              try:
+                data = download_file('/droptranslationservers.txt', 'translationservers.txt')
+                data2 = download_file('/droptranslationserverstosendtoo.txt', 'translationserverstosendtoo.txt')
+              except:
+                print("no files")
+
+              a_file = open("translationservers.txt", "a")
+              a_file.writelines(datatosave)
+              a_file.close()
+
+              upload_file('/droptranslationservers.txt', 'translationservers.txt' )
+                  
+
+
+              a_file = open("translationserverstosendtoo.txt", "a")
+              a_file.writelines(datatosave2)
+              a_file.close()
+              upload_file('/droptranslationserverstosendtoo.txt', 'translationserverstosendtoo.txt' )
+
+            except:
+              i=i+1
+              
+              embed=discord.Embed(title="Error was hit initialising command", color=0xff8800)
+              embed.add_field(name="Use of command", value="The command is used by typing: !translatehere #ChannelOfChoice", inline=True)
+              embed.add_field(name="What can cause errors", value="Not adding the channel to the command\nThe bot not being able to see the channel chosen to send translated messages too\n\nFor support feel free to reach out on the support server - [Support Server](https://discord.gg/HzEhdZApP4)",inline=False)
+              await message.channel.send(embed=embed) 
+          
+          except:
+            embed=discord.Embed(title="Error was hit initialising command", color=0xff8800)
+            embed.add_field(name="Use of command", value="The command is used by typing: !translatehere #ChannelOfChoice", inline=True)
+            embed.add_field(name="What can cause errors", value="Not adding the channel to the command\nThe bot not being able to see the channel chosen to send translated messages too\n\nFor support feel free to reach out on the support server - [Support Server](https://discord.gg/HzEhdZApP4)",inline=False)
+            await message.channel.send(embed=embed) 
+
+
+
+
+
 
 
         if (messagereceived =="!translationhelp" or messagereceived=="!help"):
