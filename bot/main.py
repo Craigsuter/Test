@@ -23,7 +23,8 @@ from dropboxUploader import download_file
 
 
 #sets up command prefix
-intents = discord.Intents().all()
+intents = discord.Intents.default()
+intents.members = True
 client = commands.Bot(command_prefix = '!', intents=intents)
 
 
