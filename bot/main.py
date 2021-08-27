@@ -1,7 +1,5 @@
 import discord
 import os
-#import pynacl
-#import dnspython
 import server
 from discord.ext import commands
 #imports
@@ -15,7 +13,6 @@ import datetime
 from time import strptime
 import asyncio
 import time
-from translation import translations
 from dropboxUploader import upload_file
 from dropboxUploader import download_file
 
@@ -32,6 +29,7 @@ client = commands.Bot(command_prefix = '!', intents=intents)
 startup = datetime.datetime.now()
 
 print("Bot started up at: ", startup)
+
 
 
 
