@@ -13,8 +13,6 @@ import datetime
 from time import strptime
 import asyncio
 import time
-from dropboxUploader import upload_file
-from dropboxUploader import download_file
 
 
 #sets up command prefix
