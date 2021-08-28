@@ -105,8 +105,7 @@ async def on_message(message):
     if (first_char=="!"):
         #Put commands here that are the same for non mods + mods
 
-        if (messagereceived=="!lol"):
-          print("k")
+        
 
         #None mod commands
         if (author.guild_permissions.administrator == False):
