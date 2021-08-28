@@ -126,6 +126,7 @@ async def on_message(message):
 
         #All Administrator commands  
         else:
+            print("Admin commands go here")
        
 
 
