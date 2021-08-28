@@ -104,14 +104,16 @@ async def on_message(message):
     
     if (first_char=="!"):
         #Put commands here that are the same for non mods + mods
-        
+
+        if (messagereceived=="!lol"):
+          print("k")
 
         #None mod commands
         if (author.guild_permissions.administrator == False):
 
 
 
-            if (messagereceived =="help"):
+            if (messagereceived =="!help"):
               await message.channel.send("This is your first command! And it sends this response!")
 
 
@@ -123,7 +125,8 @@ async def on_message(message):
 
         #All Administrator commands  
         else:
-            print("Admin commands go here")
+            if (messagereceived =="!help"):
+              await message.channel.send("This is your first command! And it sends this response!")
        
 
 
