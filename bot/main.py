@@ -126,8 +126,10 @@ async def on_message(message):
 
         #All Administrator commands  
         else:
-            if (messagereceived =="!help"):
-              await message.channel.send("This is your first admin command! And it sends this response!")
+          if (messagereceived =="!help2"):
+              await message.channel.send("This is your first command! And it sends this response!")
+          if (messagereceived =="!help"):
+            await message.channel.send("This is your first admin command! And it sends this response!")
        
 
 
